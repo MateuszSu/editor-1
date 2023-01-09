@@ -1,0 +1,15 @@
+.DS_Store
+*.swp
+.idea
+.idea_modules
+.settings/
+.classpath
+.project
+bin
+build
+.gradle
+sources.txt
+editor.iml
+out
+*.iml
+DataFile.txt
