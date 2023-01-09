@@ -3,6 +3,7 @@ package editor;
 import java.nio.file.Paths;
 
 import editor.filesystem.*;
+import editor.parser.SyntaxCheckerWrapper;
 
 public class Main {
 
@@ -18,5 +19,8 @@ public class Main {
     System.out.println(root.createFile("foo/bar/baz").getMessage());
     System.out.println(root.removeFolder("foo/baz").getMessage());
     System.out.println(root.removeFolder("bar/baz").getMessage());
+
+    SyntaxCheckerWrapper syntaxCheckerWrapper = new SyntaxCheckerWrapper();
+    syntaxCheckerWrapper.disable();
   }
 }
