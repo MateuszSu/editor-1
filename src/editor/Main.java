@@ -22,5 +22,9 @@ public class Main {
 
     SyntaxCheckerWrapper syntaxCheckerWrapper = new SyntaxCheckerWrapper();
     syntaxCheckerWrapper.disable();
+
+    Config config = new Config(syntaxCheckerWrapper);
+    config.enableSyntaxChecker("");
+    config.dump();
   }
 }
