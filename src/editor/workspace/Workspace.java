@@ -80,6 +80,9 @@ public class Workspace {
 		}
 		final Result result = tab.save();
 		tabs.remove(path);
+		if (activeTab.isActive(tab)) {
+			activeTab.unset();
+		}
 		if (!result.isOk()) {
 			return result;
 		}

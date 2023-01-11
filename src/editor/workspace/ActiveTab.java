@@ -33,6 +33,8 @@ class ActiveTab implements Editable {
 
 	public int getLinesCount() { return tab.getLines().size(); }
 
+	boolean isActive(Tab other) { return tab.equals(other); }
+
 	void set(Tab tab) { this.tab = tab; }
 
 	void unset() { this.tab = null; }
