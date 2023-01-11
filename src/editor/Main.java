@@ -26,5 +26,20 @@ public class Main {
     Config config = new Config(syntaxCheckerWrapper);
     config.enableSyntaxChecker("");
     config.dump();
+
+    Editor editor = new Editor();
+    System.out.println(editor.open(rootPath).getMessage());
+    System.out.println(editor.getFiles());
+    System.out.println(editor.getOpenedFiles());
+    System.out.println(editor.openFile("foo/bar/baz").getMessage());
+    System.out.println(editor.getOpenedFiles());
+    editor.edit().addLine(0);
+    editor.edit().modifyLine(0, "fooo");
+    System.out.println(editor.openFile("foo/foo9").getMessage());
+    editor.edit().addLine(0);
+    editor.edit().addLine(0);
+    editor.edit().modifyLine(0, "baar");
+    editor.save();
+    editor.close();
   }
 }

@@ -27,7 +27,7 @@ class Config {
 		}
 	}
 
-	public void dump() {
+	void dump() {
 		try {
 			conf.store(new FileOutputStream(confFile), null);
 		} catch (IOException e) {

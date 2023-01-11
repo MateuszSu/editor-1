@@ -3,7 +3,9 @@ package editor.filesystem;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -110,9 +112,21 @@ public class FolderImpl implements Folder {
 		return folder.removeFolder(split.getPath());
 	}
 
-	public Set<String> getFiles() { return files.keySet(); }
+	public Optional<File> getFile(final String path) {
+		final SplitPath split = new SplitPath(path);
+		if (split.isUnrolled()) {
+			return Optional.ofNullable(files.getOrDefault(split.getPath(), null));
+		}
+		final Folder folder = folders.getOrDefault(split.getDir(), null);
+		if (folder == null) {
+			return Optional.empty();
+		}
+		return folder.getFile(split.getPath());
+	}
 
-	public Set<String> getFolders() { return folders.keySet(); }
+	public Set<File> getFiles() { return new HashSet<File>(files.values()); }
+
+	public Set<Folder> getFolders() { return new HashSet<Folder>(folders.values()); }
 
 	public String getName() { return name; }
 
